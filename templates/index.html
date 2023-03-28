@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="nav">
+    <a class="nav-link" href="/display_saved_parks">Display saved parks</a>
+</nav>
+<div>
+    <h1>Find a National Park and bookmark it!</h1>
+</div>
+<br>
+    <div class="mb-3">
+        <form class="input-group bg-color-custom" method="post">
+            <input placeholder="Search for a Park" class="form-control" type="text" id="search_query" name="search_query">
+            <button class="btn btn-primary" type="submit"> Search </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
