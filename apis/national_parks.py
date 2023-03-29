@@ -43,7 +43,7 @@ def create_park_objects_list(park_data):
             email = park['contacts']['emailAddresses'][0]['emailAddress']
         except IndexError:
             email = None
-        park = Park(park_name=name, park_description=description, state_code=state_code, latitude=latitude, longitute=longitude, park_code=park_code, phone=phone, email=email)
+        park = Park(name=name, description=description, state_code=state_code, latitude=latitude, longitute=longitude, park_code=park_code, phone=phone, email=email)
         parks.append(park)
 
     return parks    

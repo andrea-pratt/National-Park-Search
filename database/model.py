@@ -12,14 +12,14 @@ class BaseModel(Model):
 
 class Park(BaseModel):
     park_id = CharField(unique=True, constraints=[Check('length(park_id) <= 500')])
-    park_name = CharField(null=False, constraints=[Check('length(park_name) <= 500')]) 
+    name = CharField(null=False, constraints=[Check('length(park_name) <= 500')]) 
     park_city = CharField(null=False, constraints=[Check('length(park_city) <= 500')])
     state_code = CharField(null=False, constraints=[Check('length(park_city) <= 500')])
     park_code = CharField(null=False, constraints=[Check('length(park_city) <= 500')])
     phone = CharField(null=False, constraints=[Check('length(park_city) <= 500')])
     email = CharField(null=False, constraints=[Check('length(park_city) <= 500')])
     park_state = CharField(null=False, constraints=[Check('length(park_state) <= 500')]) 
-    park_description = CharField(null=False, constraints=[Check('length(park_description) <= 1000')])
+    description = CharField(null=False, constraints=[Check('length(park_description) <= 1000')])
     latitude = DecimalField(null=False, constraints=[Check('length(latitude) <= 500')])
     longitude = DecimalField(null=False, constraints=[Check('length(longitude) <= 500')])
 
