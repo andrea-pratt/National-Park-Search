@@ -8,11 +8,13 @@
     <h1>Find a National Park and bookmark it!</h1>
 </div>
 <br>
+    {% include 'carousel.html' %}
     <div class="mb-3">
         <form class="input-group bg-color-custom" method="post">
             <input placeholder="Search for a Park" class="form-control" type="text" id="search_query" name="search_query">
             <button class="btn btn-primary" type="submit"> Search </button>
         </form>
     </div>
+    {% include 'results.html' %}
 </div>
 {% endblock %}

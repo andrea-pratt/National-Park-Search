@@ -1,12 +1,28 @@
-from flask import render_template
-from flask import Flask
+from flask import Flask, render_template, session, request
+from apis import unsplash
+from apis import national_parks
+import json
 
 app = Flask(__name__)
-
+app.secret_key = 'slfksflk353943049'
 
 @app.route("/", methods=['GET',"POST"])
 def home():
-    return render_template("index.html")
+    if not session.get('unsplash_images'):
+        unsplash_response, error = unsplash.get_image_response()
+        session['unsplash_images'] = unsplash.create_image_object_list(unsplash_response) 
+        image_list = session['unsplash_images']
+    else:
+        image_list = session.get('unsplash_images')
+
+    query = request.form.get('search_query')
+    if query:
+        park_data_response, error = national_parks.get_parks_data(query)
+        returned_park_list = national_parks.create_park_objects_list(park_data_response)
+        json_parks = json.dumps([p.dump() for p in returned_park_list])
+    else:
+        json_parks=None
+    return render_template("index.html", image_list=image_list, park_data=json_parks)
 
 
 @app.route("/display_saved_parks", methods=['GET',"POST"])
