@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, request
 from apis import unsplash
 from apis import national_parks
 import json
+from pprint import pprint
 
 app = Flask(__name__)
 app.secret_key = 'slfksflk353943049'
@@ -19,10 +20,9 @@ def home():
     if query:
         park_data_response, error = national_parks.get_parks_data(query)
         returned_park_list = national_parks.create_park_objects_list(park_data_response)
-        json_parks = json.dumps([p.dump() for p in returned_park_list])
     else:
-        json_parks=None
-    return render_template("index.html", image_list=image_list, park_data=json_parks)
+        returned_park_list=None
+    return render_template("index.html", image_list=image_list, park_data=returned_park_list)
 
 
 @app.route("/display_saved_parks", methods=['GET',"POST"])

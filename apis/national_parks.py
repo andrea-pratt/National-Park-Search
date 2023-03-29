@@ -12,6 +12,7 @@ def get_parks_data(query):
     if there aren't any errors, and None/exception if there are any errors."""
     try:
         params = {'q': query, 'api_key': api_key}
+        print(query)
         response = requests.get(url, params=params) # Send a GET request to the API with the query parameters
         response.raise_for_status() # Raise an exception if the response status code is not 200 OK
         response_json = response.json() # Parse the response data as JSON

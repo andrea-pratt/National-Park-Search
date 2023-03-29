@@ -34,8 +34,8 @@ class Park(BaseModel):
                           "city": self.park_city,
                           "state": self.park_state,
                           "description" : self.park_description,
-                          "latitude" : float(self.latitude),
-                          "longitude" : float(self.longitude)
+                          "latitude" : self.latitude,
+                          "longitude" : self.longitude
                           }}
 
 
